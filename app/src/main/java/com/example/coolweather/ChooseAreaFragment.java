@@ -29,6 +29,11 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+/**
+ * Created by Bam on 2018/1/2.
+ */
+
+
 public class ChooseAreaFragment extends Fragment {
 
     private static final String TAG = "ChooseAreaFragment";
@@ -130,10 +135,10 @@ public class ChooseAreaFragment extends Fragment {
         titleText.setText("中国");
         backButton.setVisibility(View.GONE);
         provinceList = DataSupport.findAll(Province.class);
-        if (provinceList.size() > 0) {
-            dataList.clear();
-            for (Province province : provinceList) {
-                dataList.add(province.getProvinceName());
+                if (provinceList.size() > 0) {
+                    dataList.clear();
+                    for (Province province : provinceList) {
+                        dataList.add(province.getProvinceName());
             }
             adapter.notifyDataSetChanged();
             listView.setSelection(0);
@@ -165,7 +170,6 @@ public class ChooseAreaFragment extends Fragment {
             queryFromServer(address, "city");
         }
     }
-
     /**
      * 查询选中市内所有的县，优先从数据库查询，如果没有查询到再去服务器上查询。
      */
@@ -188,7 +192,6 @@ public class ChooseAreaFragment extends Fragment {
             queryFromServer(address, "county");
         }
     }
-
     /**
      * 根据传入的地址和类型从服务器上查询省市县数据。
      */
@@ -222,7 +225,6 @@ public class ChooseAreaFragment extends Fragment {
                     });
                 }
             }
-
             @Override
             public void onFailure(Call call, IOException e) {
                 // 通过runOnUiThread()方法回到主线程处理逻辑
@@ -236,7 +238,6 @@ public class ChooseAreaFragment extends Fragment {
             }
         });
     }
-
     /**
      * 显示进度对话框
      */
@@ -248,7 +249,6 @@ public class ChooseAreaFragment extends Fragment {
         }
         progressDialog.show();
     }
-
     /**
      * 关闭进度对话框
      */
